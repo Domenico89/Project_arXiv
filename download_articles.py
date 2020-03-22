@@ -23,6 +23,7 @@ for arXiv_id,metadata in metadata_db.items():
     pdf=arXiv_id+'.pdf'
     #getting the link of the pdf from the metadata, this is positioned at the end of the list at position 'links'
     pdf_url=metadata['links'][-1]['href']+'.pdf'
+    pdf_url.replace("arxiv.org", "export.arxiv.org")
     path='pdf_db/'+pdf
     try:
         if not pdf in already_have:
