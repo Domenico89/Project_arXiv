@@ -1,3 +1,9 @@
+"""
+Script that reads the metadata from metadata_db and downloads the articles from export.arXiv.org
+"""
+
+
+
 import os
 import time
 import pickle
