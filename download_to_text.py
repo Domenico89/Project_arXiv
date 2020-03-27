@@ -1,5 +1,9 @@
-#from  urllib.request import urlopen
-#import shutil
+"""
+Script that avoids saving the pdfs and produce the text files directly using temporary files.
+Depending on the necessities it migth be used in place of download_articles.py and articles_to_text.py
+"""
+
+
 import requests
 import tempfile
 import time
