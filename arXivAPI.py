@@ -1,3 +1,7 @@
+"""
+Module that queries the arXiv API and download the metadata relative to the articles.
+"""
+
 import time
 import pickle
 import numpy as np
