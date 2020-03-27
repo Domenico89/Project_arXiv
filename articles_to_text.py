@@ -1,3 +1,10 @@
+"""
+Script that simply iterates over all files ./pdf_db/arXiv_id.pdf
+and create a file ./txt_db/arXiv_id.txt that contains the raw text, extracted
+using the "pdftotext" command. If a pdf cannot be converted, this
+script will not produce the output file.
+"""
+
 import os
 import utils
 
