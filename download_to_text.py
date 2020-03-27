@@ -40,9 +40,6 @@ for arXiv_id,metadata in metadata_db.items():
                     if os.path.isfile(txt_path):
                         os.system('rm '+txt_path)
                 else: num_added+=1
-            #req = urlopen(pdf_url, None, timeout)
-            #with open(path, 'wb') as file:
-            #   shutil.copyfileobj(req, file)
             #time.sleep(0.01)
         else:
             print('%s already exists, skipping' % (arXiv_id))
