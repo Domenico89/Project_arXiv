@@ -1,0 +1,27 @@
+<html>
+
+<p>
+    <h1>Primary recomended class: {{clss[0]}}, Matching: {{prob[0]}}%</h1>
+</p>
+
+<iframe src = "{{filename}}" width = "50%" height = "70%"></iframe>
+
+<p>
+    Second class: {{clss[1]}}, Matching: {{prob[1]}}%
+</p>
+<p>
+    Third class: {{clss[2]}}, Matching: {{prob[2]}}%
+</p>
+<p>
+    <a href="/">Upload a new article</a>
+</p>
+
+<h2>Here is some articles that might be related to your work</h2>
+
+{% for link in similar%}
+    <p>
+        <a href="{{link}}">{{link}}</a>
+    </p>
+{% endfor %}
+
+</html>
