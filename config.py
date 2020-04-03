@@ -2,7 +2,7 @@
 import os
 
 
-class Config:
+class Config_app:
     """Set Flask configuration vars."""
 
     # General Config

@@ -8,6 +8,11 @@ class Config(object):
     txt_db=os.path.join('data','txt_db')
     #folder where to store temporary pdfs
     tmp=os.path.join('data','tmp') 
+    #path for the vectorised articles
+    vectorized_articles=os.path.join('data','vectorized_articles.p')
+    #paths of the trained models
+    tfidf=os.path.join('model','tfidf.p')
+    logr=os.path.join('model','logr.p')
 
 
 def get_id_version(url):

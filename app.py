@@ -4,17 +4,18 @@ import numpy as np
 import pickle
 from flask import Flask, flash, request, redirect, url_for, render_template, send_from_directory
 from werkzeug.utils import secure_filename
-from config import Config
+from config import Config_app
 from model import model_load, get_class, from_pdf_to_vector, find_similar
+from utils import Config
 
 #UPLOAD_FOLDER = 'static/pdf'
 ALLOWED_EXTENSIONS = {'pdf'}
 
-tfidf,logr=model_load('tfidf.p','logr.p')
-database=pickle.load(open('vectorized_articles.p','rb'))
+tfidf,logr=model_load(Config.tfidf,Config.logr)
+database=pickle.load(open(Config.vectorized_articles,'rb'))
 
 app = Flask(__name__)
-app.config.from_object(Config)
+app.config.from_object(Config_app)
 
 def allowed_file(filename):
     return '.' in filename and \
@@ -39,7 +40,7 @@ def upload_file():
             pdf_path=os.path.join('static/pdf',filename)
             return redirect(url_for('uploaded_file', filename=filename))
         else:
-            flash('Allowed file types are txt, pdf, png, jpg, jpeg, gif')
+            flash('You are only allowed to upload pdf files')
             return redirect(request.url)
     return render_template("index.html")
 
