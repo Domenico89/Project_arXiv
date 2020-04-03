@@ -1,5 +1,9 @@
 """
 Module that queries the arXiv API and download the metadata relative to the articles.
+
+Part of this code comes from a readaptation of the brilliant work contained in
+https://github.com/karpathy/arxiv-sanity-preserver.git
+
 """
 
 import time
@@ -38,14 +42,13 @@ else:
         
     
 num_added_tot=0
-#num_old_tot=0
+
 for cat in arXiv_categories:
     search_query='cat:'+cat
     
     num_cat_added_tot=0
     i=0
     while num_cat_added_tot<args.max_index:
-    #for i in range(args.start_index,args.max_index,args.results_per_iteration):
         query = 'search_query=%s&sortBy=lastUpdatedDate&start=%i&max_results=%i' % (search_query,i, args.results_per_iteration)
    
         with urllib.request.urlopen(base_url+query) as url:
@@ -74,17 +77,9 @@ for cat in arXiv_categories:
                 break
 		    
         print('Added %i papers in category %s . Papers skipped %i'%(num_cat_added,cat,num_cat_old))
-        #num_cat_added_tot+=num_cat_added
         i+=args.results_per_iteration
-        #if len(parse.entries)==0:
-        #    print('The search did not produced any result for cat:%s'%(cat))
-        #    break
-        
-        #if num_cat_added==0:
-        #    print('No papers added, there are probably no new results')
-        #    break
         num_added_tot=num_added_tot+num_cat_added
-        #num_old_tot=num_old_tot+num_cat_old
+        
         #Waiting some seconds to avoid being cut out from arXiv
         time.sleep(args.wait_time+random.uniform(0,0.1))
 
