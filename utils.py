@@ -1,4 +1,14 @@
 import numpy as np
+import os
+
+class Config(object):
+    #path for metadata storing
+    metadata_db=os.path.join('data','metadata_db')
+    #path for storing the articles in txt form
+    txt_db=os.path.join('data','txt_db')
+    #folder where to store temporary pdfs
+    tmp=os.path.join('data','tmp') 
+
 
 def get_id_version(url):
     id_version=url[url.rfind('/')+1:].split('v')

@@ -8,12 +8,11 @@ https://github.com/karpathy/arxiv-sanity-preserver.git
 
 import time
 import pickle
-import numpy as np
 import urllib.request
 import random
 import feedparser
 import argparse
-import utils
+from utils import Config, get_id_version
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--search_cat',help='category used for the query used by arxiv API. See http://arxiv.org/help/api/user-manual#detailed_examples')
@@ -25,7 +24,7 @@ args = parser.parse_args()
 
 
 try:
-    with open('metadata_db', 'rb') as file:
+    with open(Config.metadata_db, 'rb') as file:
         metadata_db = pickle.load(file)
 except Exception as e:
     print('error loading existing database: ',e)
@@ -62,7 +61,7 @@ for cat in arXiv_categories:
         num_cat_old=0
 
         for e in parse.entries:
-            idx,v=utils.get_id_version(e['id'])
+            idx,v=get_id_version(e['id'])
             e['raw_id']=cat+'/'+idx
             e['version']=v
         #add the article to the database only if the article is not there already (keeping the version into consideration) 
@@ -87,5 +86,5 @@ for cat in arXiv_categories:
 print('Total number of papers added %i.'%(num_added_tot))
 
 if num_added_tot > 0:
-    with open('metadata_db', 'wb') as file:
+    with open(Config.metadata_db, 'wb') as file:
         pickle.dump(metadata_db,file)

@@ -8,23 +8,25 @@ https://github.com/karpathy/arxiv-sanity-preserver.git
 import os
 import pickle
 import shutil
+from utils import Config
 from  urllib.request import urlopen
 
-with open('metadata_db','rb') as file:
+
+with open(Config.metadata_db,'rb') as file:
     metadata_db=pickle.load(file)
 
-if not os.path.exists('tmp'): #create directory to temporarily store pdfs if not present aready
-    os.makedirs('tmp')
+if not os.path.exists(Config.tmp): #create directory to temporarily store pdfs if not present aready
+    os.makedirs(Config.tmp)
 
-if not os.path.exists('txt_db'): #create directory to temporarily store pdfs if not present aready
-    os.makedirs('txt_db')
+if not os.path.exists(Config.txt_db): #create directory to temporarily store pdfs if not present aready
+    os.makedirs(Config.txt_db)
 
 timeout=10 #waiting seconds before stopping the download
-already_have = set(os.listdir('txt_db')) #getting list of papers that are already present in the directory  
+already_have = set(os.listdir(Config.txt_db)) #getting list of papers that are already present in the directory  
 
 num_to_add=0
 num_added=0
-with open('metadata_db','rb') as file:
+with open(Config.metadata_db,'rb') as file:
     metadata_db=pickle.load(file)
 
 for arXiv_id,metadata in metadata_db.items():
@@ -34,8 +36,8 @@ for arXiv_id,metadata in metadata_db.items():
     pdf_url=metadata['links'][-1]['href']+'.pdf'
     #make the link into the link specifically provided by arXiv for harvesting purposes 
     pdf_url=pdf_url.replace("arxiv.org", "export.arxiv.org")
-    pdf_path=os.path.join('tmp',pdf)
-    txt_path=os.path.join('txt_db',txt)
+    pdf_path=os.path.join(Config.tmp,pdf)
+    txt_path=os.path.join(Config.txt_db,txt)
     try:
         if not txt in already_have:
             num_to_add+=1
