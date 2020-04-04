@@ -4,9 +4,12 @@ import numpy as np
 import re
 
 def clean(article):
+    #remove the reference to the class that arxiv put at the beginning of the papers
     document=re.sub('\[(.+?)\]','',article)
+    #remove all the numbers
     document=re.sub(' [0-9]+ ','',document)
-    document=re.sub('arxiv:(.*?) ','',document)
+    #remove the reference to the paper that arxiv put at the beginning of the papers
+    document=re.sub('arXiv:(.*?) ','',document)
     yield document
 
 def model_load(tfidf_path,model_path):
