@@ -4,12 +4,9 @@ import numpy as np
 import re
 
 def clean(article):
-    #remove the reference to the class that arxiv put at the beginning of the papers
     document=re.sub('\[(.+?)\]','',article)
-    #remove all the numbers
     document=re.sub(' [0-9]+ ','',document)
-    #remove the reference to the paper that arxiv put at the beginning of the papers
-    document=re.sub('arXiv:(.*?) ','',document)
+    document=re.sub('arxiv:(.*?) ','',document)
     yield document
 
 def model_load(tfidf_path,model_path):
@@ -41,5 +38,5 @@ def get_class(x,model):
     pos=np.argsort(-prob)
     prob=np.dot(np.true_divide(prob[pos[:3]],np.sum(prob[pos[:3]])),100)
     prob=prob.astype(int)
-    prob[2]=100-prob[1]-prob[0]
+    prob[1]=100-prob[2]-prob[0]
     return prob,model.classes_[pos[:3]]
