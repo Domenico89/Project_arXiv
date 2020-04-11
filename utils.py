@@ -4,16 +4,16 @@ import re
 import pickle
 
 class Config(object):
-    #path for metadata storing
-    metadata_db=os.path.join('data','metadata_db')
-    #path for storing the articles in txt form
-    txt_db=os.path.join('data','txt_db')
-    #folder where to store temporary pdfs
-    tmp=os.path.join('data','tmp') 
-    #path for the vectorised articles
-    vectorized_articles=os.path.join('data','vectorized_articles.p')
     #path where to store model related stuff
     model='data'
+    #path for metadata storing
+    metadata_db=os.path.join(model,'metadata_db')
+    #path for storing the articles in txt form
+    txt_db=os.path.join(model,'txt_db')
+    #folder where to store temporary pdfs
+    tmp=os.path.join(model,'tmp') 
+    #path for the vectorised articles
+    vectorized_articles=os.path.join(model,'vectorized_articles.p')
     #paths of the trained models
     tfidf=os.path.join(model,'tfidf.p')
     logr=os.path.join(model,'logr.p')
@@ -36,12 +36,10 @@ def read_clean(txts):
     for txt in txts:
         with open(os.path.join(Config.txt_db,txt+'.txt'),'r') as file:
             document=file.read()
-            #remove the reference to the class that arxiv put at the beginning of the papers
+            #remove the reference to the class that arxiv puts at the beginning of the papers
             document=re.sub('\[(.+?)\]','',document)
-            #remove all the numbers
-            document=re.sub(' [0-9]+ ','',document)
-            #remove the reference to the paper that arxiv put at the beginning of the papers
-            document=re.sub('arxiv:(.*?) ','',document)
+            #remove the reference to the paper that arxiv puts at the beginning of the papers
+            document=re.sub('arXiv:(.*?) ','',document,1)
         yield document
 
 def get_y(idxs):
