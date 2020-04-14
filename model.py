@@ -28,10 +28,11 @@ def from_pdf_to_vector(pdf_path,tfidf):
     os.system("rm %s"%(txt_path))
     return x,exit
 
+#Function that return the articles in the database X that are closer to the given article x based on cos similarity
 def find_similar(X,x,how_many):
-    cos_similarity=X.dot(x.transpose())
-    cos_similarity=np.asarray(cos_similarity.todense()).reshape(-1)
-    return np.argsort(-cos_similarity)[:how_many+1]
+    cos_similarity=x.dot(X.transpose())
+    cos_similarity=np.asarray(cos_similarity.todense())
+    return np.argsort(-cos_similarity)[:,:how_many]
 
 def get_class(x,model): 
     prob=model.predict_proba(x)[0]
