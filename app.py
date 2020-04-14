@@ -55,7 +55,7 @@ def uploaded_file(filename):
         #Get the classes that best suit the article and the corresponding probabilities
         prob,clss=get_class(x,logr)
         #Find the first 10 similar articles to the one uploaded in the database
-        similar_pos=find_similar(database['X'],x,10)
+        similar_pos=find_similar(database['X'],x,10)[0]
        
         return render_template("classification.html",filename=os.path.join('/',filename),prob=prob,clss=clss,similar=database['links'][similar_pos])
 
