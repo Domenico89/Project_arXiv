@@ -17,6 +17,10 @@ class Config(object):
     #paths of the trained models
     tfidf=os.path.join(model,'tfidf.p')
     logr=os.path.join(model,'logr.p')
+    #paths for the citations
+    citations_db=os.path.join(model,'citations_db')
+    cited_vectorized=os.path.join(model,'cited_vectorized')
+    citing_vectorized=os.path.join(model,'citing_vectorized')
 
 
 def get_id_version(url):
