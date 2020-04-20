@@ -1,0 +1,75 @@
+{%extends 'base.html' %}
+
+{%block content%}
+
+  <div class="container-fluid text-left">    
+    <div class="row content" style="height:662px"> 
+      
+      <div class="col-md-8 text-left;">
+         <div style="height:900px">
+          <iframe style="margin-right: 0em; margin-top: 1em"" src = "{{filename}}" width = "80%" height = "70%"></iframe>
+         </div>
+      </div>
+
+      <!-- Start second column -->   
+      <div class="col-md-4 text-left">
+        
+        <!--Start of first row-->
+        <div class="row content" style="height:360px">
+          <div class="col-md-4 text-center">
+            <div style="margin-left:-17em; margin-top:6.5em"> 
+              <h4>Primary Class:</h4> 
+              <p>
+                {{clss[0]}}
+              </p>
+              <h6>Secondary Class:</h6> 
+              <p>
+                {{clss[1]}}
+              </p>
+              <h6>Tertiary Class:</h6> 
+              <p>
+                {{clss[2]}}
+              </p>
+            </div>
+          </div>
+          <div class="col-md-8 text-left">
+            <img style="margin-left:-7em; margin-top: 1em" src="{{img}}" height="350" width="380"> 
+          </div>   
+        </div>
+        <!--End of first row-->
+        <!--Start of second row-->
+        <div class="row content" style="height:115px">
+          
+          <h2 style="margin-left: -2.5em; margin-top:1em;"> Articles you may find interesting </h2> 
+          <div class="span6" style="padding-right:20px;margin-left: -7.2em; border-right: 2px solid #ccc;">
+            <p>
+              {% for link in similar[5:]%}
+                <p>
+                  <a href="{{link}}">{{link}}</a>
+                </p>
+              {% endfor %}
+            </p>
+          </div>
+
+          <div class="span6" style="padding-left:20px;">
+            <p>
+              {% for link in similar[:4]%}
+                <p>
+                  <a href="{{link}}">{{link}}</a>
+                </p>
+              {% endfor %}
+            </p>
+          </div>
+         
+        </div>      
+        <!--End of second row-->
+        <!--Start of third row-->
+        <div class="row content" style="height:100px text-center">
+            <a class="btn btn-dark btn-sm btn-block" href="/" style="margin-top: 10.5em;margin-left: -5.75em;" type="button">Try Again</a>
+        </div>
+        <!--End of third row-->
+      </div> 
+      <!-- End of second column -->                
+    </div>
+  </div>
+{% endblock %}

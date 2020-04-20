@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+   
+      
+  <div class="container-fluid text-center" style="height:570px">    
+    <div class="row content">
+      <div class="col-md-2 text-center">
+      </div>
+      <div class="col-md-8 text-left">
+        <h1 style="margin-top: 1.2em; margin-bottom: 0.9em;"> About </h1>
+        <p>
+        ArXiv is a free distribution service and an open-access repository of electronic preprints
+        approved for posting after moderation, but not full peer-review. It is owned by Cornell
+        University and consists of scientific papers on ​ mathematics​, ​ physics​, ​ astronomy​, ​ electrical
+        engineering​, ​ computer science​, ​ quantitative biology​, ​statistics​, ​mathematical finance and
+        economics​, which can be freely accessed online.
+        Begun on August 14, 1991, arXiv.org passed the half-million article milestone on October 3,
+        2008, and had hit a million by the end of 2014. By October 2016 the submission rate had grown
+        to more than 10,000 per month.
+        </p>
+        <p>
+          In many fields of mathematics and physics, almost all scientific papers are ​ self-archived on
+          the arXiv repository. Every field of research contains a lot of subcategories under which the
+          authors can submit their article. Especially for young researchers and students, it can be
+          sometimes bothersome to determine which sub-category is best suited for their article. 
+          Given the large amount of papers published every day it is also easy to miss articles that might be relevant 
+          to one's reseach.
+        </p>
+        <p>
+          This application is intended to help students and researchers to make their use of arXiv easier. 
+          It performs tfidf and logistic regression to determine which are the best three arXiv classes that describe an input 
+          article. 
+          It also returns the matching with the articles in the database and perform a cosine similarity to find  
+          which articles might be related to the article uploaded by the user.   
+        </p>
+      </div>   
+      <div class="col-sm-2 text-center">
+      </div>
+    </div>
+    <div class="row content">
+    </div>
+  </div>
+
+{% endblock %}

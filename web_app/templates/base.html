@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <style>
+      .bg-arXiv-red {
+       background-color: darkred !important;
+       }   
+      .row.content {height: 180px}
+      footer {
+      position: relative;
+      background-color: #343a40;
+      color: white;
+      padding: 3px;
+      }
+      hr {
+      border-color: inherit;
+    }
+   /* .navbar-brand{
+    color: blue !important;
+    }*/
+    </style>   
+
+    <title>Arxiv Writer Support</title>
+
+  </head>
+  <body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark  bg-arXiv-red">
+  <a href="/" {% if (request.path == "/About" or request.path == "/Terms")%} style="color: #C88085" {% endif %}class="navbar-brand ">ArXiv Support</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <!--<a style="font-size: 1.2em !important" class="nav-item nav-link active" href="/home">ArXiv Support</a>-->
+      <a {% if request.path == "/About" %}class="nav-item nav-link active" {% else %} class="nav-item nav-link" {% endif %} href="/About">About</a>
+      <a {% if request.path == "/Terms" %}class="nav-item nav-link active" {% else %} class="nav-item nav-link" {% endif %} href="/Terms">Terms of Service</a>
+    </div>
+  </div>
+</nav>
+
+
+  {% block content%}{% endblock %}
+
+<!--<footer class="container-fluid text-center">
+  <p>Footer Text</p>
+</footer>-->
+
+<!-- Footer -->
+  <footer class="page-footer font-small unique-color-dark">
+
+  
+  <!-- Footer Links -->
+    <div class="container text-center text-md-left mt-5">
+
+    <!-- Grid row -->
+      <div class="row mt-3">
+
+      <!-- Grid column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+
+        <!-- Content -->
+          <h6 class="text-uppercase font-weight-bold">BackGround</h6>
+          <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+          <p>This application was built as a part of my training program in DublinAI.fellowship .</p>
+
+        </div>
+      <!-- Grid column -->
+
+      
+      <!-- Grid column -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+        <!-- Links -->
+          <h6 class="text-uppercase font-weight-bold">Useful links</h6>
+          <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+          <p>
+            <a href="https://www.dublin.ai/">DublinAI</a>
+          </p>
+          <p>
+            <a href="https://arxiv.org/">ArXiv</a>
+          </p>
+          <p>
+            <a href="https://www.arxiv-sanity.com/">ArXiv Sanity</a>
+          </p>
+        </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+        <!-- Links -->
+          <h6 class="text-uppercase font-weight-bold">Contacts</h6>
+          <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+
+          <p>
+            <a href="https://github.com/Domenico89">GitHub</a>
+          </p>
+          <p>
+            <a href="https://www.linkedin.com/in/domenico-pellegrino-614523109">LinkedIn</a>          
+	  </p>
+          <p>
+            <a href="mailto:mimmo.pellegrino89@gmail.com">E-Mail</a>
+          </p>
+
+        </div>
+      <!-- Grid column -->
+      
+      <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+        </div>
+      <!-- Grid column -->
+
+
+      </div>
+    <!-- Grid row -->
+
+    </div>
+  <!-- Footer Links -->
+
+  </footer>
+<!-- Footer -->
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>

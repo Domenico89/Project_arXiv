@@ -1,0 +1,36 @@
+{%extends 'base.html' %}
+
+{%block content %}
+ <div class="container-fluid text-center">    
+      <div class="row content">
+        <div class="col-md-12 text-center"> 
+          <h1 style="margin-top: 2.7em;">ArXiv Writer Support</h1>	 
+        </div>
+      </div>
+    </div>
+  <div class="container-fluid text-center">    
+    <div class="row content">
+      <div class="col-md-2 text-center">
+      </div>
+      <div class="col-md-8 text-left">
+        <ol style="margin-left: 9.8em;">
+          <li>Click the CHOOSE FILE and select the pdf article you want to analyse.</li>
+          <li>Click ANALYSE to evaluate your article.</li>
+        </ol>
+
+        <div class='container' style="margin-left: 14.2em; margin-top:1.5em">
+            <form method=post enctype=multipart/form-data>
+              <p style="border-color: black; ">
+                <input type="file" name="file" autocomplete="off" required>
+                <input type="submit" value="Analyse">
+              </p>
+            </form>
+            {% include 'messages.html' %}
+        </div>
+
+      </div>   
+      <div class="col-sm-2 text-center">
+      </div>
+    </div>
+  </div>
+{% endblock %}
