@@ -74,7 +74,8 @@ X = tfidf.transform(corpus)
 
 #save articles in vectorized form together with links and names
 articles=[metadata_db[article]['links'][-1]['href'] for article in txt_labels_train]
-dictionary={'X':X,'articles':np.array(txt_labels_train),'links':np.array(articles)}
+titles=[metadata_db[article]['title'].replace('\n', '').replace('  ',' ') for article in txt_labels_train]
+dictionary={'X':X,'articles':np.array(txt_labels_train),'links':np.array(articles),titles:np.array(titles)}
 with open(Config.vectorized_articles,'wb') as file:
     pickle.dump(dictionary,file)
 
