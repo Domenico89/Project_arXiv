@@ -5,5 +5,5 @@ The notebook Data_Harvesting.ipynb illustrate how to use the arXiv API to get ar
 
 In web_app we collect the web application developed with flask, that can be found at http://54.154.46.191/ .
 
-The scripts conatined in this repository use pdftotext to transforms articles into strings. In linux it can be installed with
+The scripts contained in this repository use pdftotext to transforms articles into strings. In Linux it can be installed with
 sudo apt-get update && sudo apt-get install -y xpdf .
