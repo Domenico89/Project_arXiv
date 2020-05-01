@@ -30,12 +30,6 @@ def get_id_version(url):
 def strip_extension(name):
     return name[:name.rfind('.')]
 
-def strip_extension_1(name):
-    if type(name) is list or np.ndarray:
-        return [x[:x.rfind('.')] if x.rfind('.')!=-1 else x for x in name]
-    else:
-        return name[:name.rfind('.')]
-
 def read_clean(txts):
     for txt in txts:
         with open(os.path.join(Config.txt_db,txt+'.txt'),'r') as file:

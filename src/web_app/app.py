@@ -5,14 +5,14 @@ import pickle
 from flask import Flask, flash, request, redirect, url_for, render_template, send_from_directory
 from werkzeug.utils import secure_filename
 from config import Config
-from model import model_load, get_class, from_pdf_to_vector, find_similar
+from utils import model_load, get_class, from_pdf_to_vector, find_similar
 import matplotlib.pyplot as plt
 
 ALLOWED_EXTENSIONS = {'pdf'}
 
-tfidf,logr=model_load('tfidf.p','logr.p')
+tfidf,logr=model_load('data/tfidf.p','data/logr.p')
 
-with open('vectorized_articles.p','rb') as file:
+with open('data/vectorized_articles.p','rb') as file:
     database=pickle.load(file)
 
 app = Flask(__name__)

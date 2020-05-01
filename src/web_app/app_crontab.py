@@ -1,6 +1,6 @@
 import os
 import pickle
-from utils import Config, strip_extension
+from utils import strip_extension
 import numpy as np
 from scipy import vstack
 
@@ -15,27 +15,27 @@ app.conf.enable_utc = False
 def new_articles():
     
     #Use the arXivAPI script to download the metadata of the newest articles
-    os.remove('metadata_db')
+    os.remove('data/metadata_db')
     os.system('python3 arXivAPI.py --max_index=110')
     #Download articles into the local txt_db. Keeping them make it easier whenever we decide to train again tfidf
     os.system('python3 download_to_text.py') 
     
-    with open('metadata_db', 'rb') as file:
+    with open('data/metadata_db', 'rb') as file:
         metadata_db = pickle.load(file)
     
-    txts = os.listdir(Config.txt_db)
+    txts = os.listdir('txt_db')
 
     #Remove old articles from the database
     for txt in txts:
         idx = strip_extension(txt)
         if idx not in metadata_db.keys():
-            path = os.path.join(Config.txt_db,txt)
+            path = os.path.join('txt_db',txt)
             os.remove(path)
         
     with open('vectorized_articles.p','rb') as file:
         vectorized_articles=pickle.load(file)
     
-    txts = os.listdir(Config.txt_db)
+    txts = os.listdir('txt_db')
     idxs = [strip_extension(txt) for txt in txts]
     #Position of papers that are already in the database
     pos = np.in1d(vectorized_articles['articles'],idxs).nonzero()[0]
@@ -63,7 +63,7 @@ def new_articles():
     
     
         dictionary = {'X':X,'articles':np.array(txt_labels_train),'links':np.array(articles),'titles':np.array(titles)}
-        with open(Config.vectorized_articles,'wb') as file:
+        with open('data/vectorized_articles','wb') as file:
             pickle.dump(dictionary,file)    
 
 # add "new_articles" to the beat schedule

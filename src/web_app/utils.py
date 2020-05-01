@@ -34,6 +34,9 @@ def find_similar(X,x,how_many):
     cos_similarity=np.asarray(cos_similarity.todense())
     return np.argsort(-cos_similarity)[:,:how_many]
 
+def strip_extension(name):
+    return name[:name.rfind('.')]
+
 def get_class(x,model): 
     prob=model.predict_proba(x)[0]
     pos=np.argsort(-prob)
