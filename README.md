@@ -4,7 +4,7 @@ Project to help students and young researchers determine which category suits th
 The scripts contained in this repository use pdftotext to transforms articles into strings. In Linux it can be installed with
 sudo apt-get update && sudo apt-get install -y xpdf .
 
-In web_app we collect the web application developed with flask, that can be found at www.arxiv-writer-support.com .
+The web application contained in src/web_app can be found at www.arxiv-writer-support.com .
 
 A video explaining the project can be found at www.loom.com/share/5e7b690643c24423958cadcabe5587f3 . 
 
