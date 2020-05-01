@@ -1,5 +1,5 @@
 # Project_arXiv
-Project to help students and young researchers determine which category suits their articles and provides a set of articles that might be relevant to their work.
+Project to help students and young researchers determine which category suits their articles and provide a set of articles that might be relevant to their work.
 
 The scripts contained in this repository use pdftotext to transforms articles into strings. In Linux it can be installed with
 sudo apt-get update && sudo apt-get install -y xpdf .
